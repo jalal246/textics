@@ -63,7 +63,7 @@ Tests
 -----
 
 ```sh
-$ npm test
+npm test
 ```
 
 

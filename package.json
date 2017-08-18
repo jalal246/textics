@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Text Statistics",
   "main": "dist/textics.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "test": "mocha  --compilers js:babel-core/register test",
     "test:w": "mocha  --compilers js:babel-core/register test -w",

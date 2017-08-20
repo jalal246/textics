@@ -8,7 +8,7 @@
 
 > Text Statistics
 
-`textics` counts lines, words, chars and spaces for given string.
+`textics` counts lines, words, chars and spaces for a given string.
 
 Getting Started
 ---------------

@@ -1,6 +1,6 @@
 {
   "name": "textics",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Text Statistics",
   "main": "dist/textics.js",
   "directories": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha  --compilers js:babel-core/register test",
-    "test:w": "mocha  --compilers js:babel-core/register test -w",
+    "test:w": "mocha   --compilers js:babel-core/register test -w",
     "test:cov": "istanbul cover node_modules/mocha/bin/_mocha --  --compilers js:babel-core/register test",
     "check:cov": "istanbul check-coverage --root coverage --statement 100 --branch 100 --function 100 --line 100",
     "report:cov": "cat ./coverage/lcov.info | codecov",

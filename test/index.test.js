@@ -4,14 +4,14 @@ import textics from '../src/textics';
 
 const expect = chai.expect;
 
-const p = 'you got the power';
+const p = '  you  w got the  power   ';
 let txt = '';
 
-const LOOP = 20000;
+const LOOP = 1;
 const linesNum = LOOP;
 const wordsNum = 4 * linesNum;
-const charNum = 14 * linesNum;
-const spacesNum = 3 * linesNum;
+const charNum = 15 * linesNum;
+const spacesNum = 11 * linesNum;
 
 
 describe('TEXTICS', () => {

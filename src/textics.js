@@ -1,26 +1,30 @@
-// removes extra spaces to split correctly
-// credit: https://stackoverflow.com/questions/18679576/counting-words-in-string
-const initStr = str => str
-  .trim()
-  .replace(/[ ]{2,}/gi, ' ') // 2 or more space to 1
-  .replace(/\n /, '\n'); // exclude newline with a start spacing
-
-const getLen = str => str.length;
-
-const strSplit = (str, reg) => str.split(reg);
 
 const textics = (str) => {
-  const init = initStr(str);
-  const linesArr = strSplit(init, /\r\n|\r|\n/);
-  const lines = getLen(linesArr);
+  // empty str
+  if (str.length === 0) {
+    return {
+      lines: 0,
+      words: 0,
+      chars: 0,
+      spaces: 0,
+    };
+  }
+  const linesArr =
+    str.trim()
+      .replace(/\n /, '\n') // exclude newline with a start spacing
+      .split(/\r\n|\r|\n/);
+  // empty str or one sentence no lines
+  const lines = linesArr.length;
+  // if no lines
   let words = 0;
   let chars = 0;
+  let char;
   for (let i = 0; i < lines; i += 1) {
-    const wordsArr = strSplit(linesArr[i], ' ');
-    const rowWords = getLen(wordsArr);
-    words += rowWords;
-    for (let k = 0; k < rowWords; k += 1) {
-      chars += getLen(wordsArr[k]);
+    const wordsArr = linesArr[i].trim().split(/\s+/);
+    for (let k = 0; k < wordsArr.length; k += 1) {
+      char = wordsArr[k].length;
+      chars += char;
+      if (char > 1) words += 1;
     }
   }
   return {

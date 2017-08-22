@@ -1,7 +1,6 @@
 npm_packages
 coverage
 dist
-other
 node_modules
 .npm
 npm-debug.log*

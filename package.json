@@ -1,6 +1,6 @@
 {
   "name": "textics",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Text Statistics",
   "main": "dist/textics.js",
   "directories": {

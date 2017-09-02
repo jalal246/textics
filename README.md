@@ -58,6 +58,9 @@ console.log(stat);
 
 ```
 
+Using textics with stream
+-------------------------
+See :point_right: [textics-stream](https://github.com/Jimmy02020/textics-stream) :fire:
 
 Tests
 -----

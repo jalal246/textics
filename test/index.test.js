@@ -7,7 +7,7 @@ const expect = chai.expect;
 const p = '  you  w got the  power   ';
 let txt = '';
 
-const LOOP = 10;
+const LOOP = 21809;
 const linesNum = LOOP;
 const wordsNum = 4 * linesNum;
 const charNum = 15 * linesNum;

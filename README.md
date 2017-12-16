@@ -13,12 +13,6 @@
 Getting Started
 ---------------
 
-GIT:
-```sh
-git clone git@github.com:jimmy02020/textics.git
-cd textics
-```
-
 NPM
 ```sh
 npm install textics

@@ -27,19 +27,19 @@ function removeSpacesFromStart(str) {
 }
 
 /**
+ *
  * Splits each line of given string to array element.
  *
- * Note: new line defined as: \n
- *
  * @param {string} str
- * @returns {Array}
+ * @param {*} [basedOn=/\n/] - new line defined as: \n
+ * @returns
  */
-function newLines2Array(str) {
-  return str.trim().split(/\n/);
+function toArray(str, basedOn = /\n/) {
+  return str.trim().split(basedOn);
 }
 
 module.exports = {
   unifyNewLineChar,
   removeSpacesFromStart,
-  newLines2Array
+  toArray
 };

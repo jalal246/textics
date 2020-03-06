@@ -4,10 +4,10 @@ const { expect } = require("chai");
 const {
   unifyNewLineChar,
   removeSpacesFromStart,
-  newLines2Array
+  toArray
 } = require("../src/utils.js");
 
-describe.only("utils", () => {
+describe("utils", () => {
   describe("unifyNewLineChar", () => {
     it("replaces R", () => {
       const TXT_SAMPLE = "Hello\rThere\r!";
@@ -65,9 +65,9 @@ describe.only("utils", () => {
     });
   });
 
-  it("newLines2Array", () => {
+  it("toArray", () => {
     const TXT_SAMPLE = "\nHello\nThere\n!";
-    const result = newLines2Array(TXT_SAMPLE);
+    const result = toArray(TXT_SAMPLE);
 
     expect(result).to.be.an("array");
     expect(result.length).to.be.equal(3);

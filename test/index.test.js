@@ -1,53 +1,79 @@
 /* eslint-env mocha */
-import chai from 'chai';
-import textics from '../src/textics';
 
-const expect = chai.expect;
+const { expect } = require("chai");
+const textics = require("../src/textics.js");
 
-const p = '  you  w got the  power   ';
-let txt = '';
+describe("TEXTICS", () => {
+  it("returns correct number for 1 word", () => {
+    const sample = "you";
+    const result = textics(sample);
 
-const LOOP = 21809;
-const linesNum = LOOP;
-const wordsNum = 4 * linesNum;
-const charNum = 15 * linesNum;
-const spacesNum = 11 * linesNum;
-
-
-describe('TEXTICS', () => {
-  it('Make text to be tested', () => {
-    let nl = 0;
-    for (let i = 0; i < LOOP; i += 1) {
-      nl += 1;
-      if (nl === 1) txt += `${p}\r`;
-      else if (nl === 2) txt += `${p}\r\n`;
-      else txt += `${p}\n`;
-      if (nl === 3) nl = 0;
-    }
-  });
-  it('returns correct stats', () => {
-    // console.log(textics(txt));
-    expect(textics(txt)).to.deep.equal({
-      lines: linesNum,
-      words: wordsNum,
-      chars: charNum,
-      spaces: spacesNum,
-    });
-  });
-  it('checks empty string', () => {
-    expect(textics('')).to.deep.equal({
-      lines: 0,
-      words: 0,
-      chars: 0,
-      spaces: 0,
-    });
-  });
-  it('checks empty string', () => {
-    expect(textics(p)).to.deep.equal({
+    expect(result).to.deep.equal({
       lines: 1,
-      words: 4,
-      chars: 15,
-      spaces: 11,
+      words: 1,
+      chars: 3,
+      spaces: 0
     });
+  });
+
+  it("returns correct number for 1-word with extra spaces", () => {
+    const sample = "   you   ";
+    const result = textics(sample);
+
+    expect(result).to.deep.equal({
+      lines: 1,
+      words: 1,
+      chars: 3,
+      spaces: 6
+    });
+  });
+
+  it("returns correct number for 2-words with extra spaces", () => {
+    const sample = " you !  ";
+    const result = textics(sample);
+
+    expect(result).to.deep.equal({
+      lines: 1,
+      words: 2,
+      chars: 4,
+      spaces: 4
+    });
+  });
+
+  it("works for full sentence with spaces", () => {
+    const sample = " Hello my old friend ! ";
+    const result = textics(sample);
+
+    expect(result).to.deep.equal({
+      lines: 1,
+      words: 5,
+      chars: 17,
+      spaces: 6
+    });
+  });
+
+  it("works with multi lines", () => {
+    const sample = "\n Hello \nmy \nold \nfriend ! ";
+
+    const result = textics(sample);
+
+    expect(result).to.deep.equal({
+      lines: 4,
+      words: 5,
+      chars: 17,
+      spaces: 6
+    });
+  });
+
+  it("returns correct number with auto gen text", () => {
+    const str =
+      "Hello I am testing\nMy program here\nHope it works\nPerfectly \nWell !";
+
+    const { lines, words, chars, spaces } = textics(str);
+
+    expect(lines).to.be.equal(5);
+    expect(words).to.be.equal(13);
+    expect(chars).to.be.equal(53);
+    expect(spaces).to.be.equal(8);
   });
 });

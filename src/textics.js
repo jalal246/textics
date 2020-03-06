@@ -1,38 +1,21 @@
-const {
-  unifyNewLineChar,
-  removeSpacesFromStart,
-  newLines2Array
-} = require("./utils");
+/* eslint-disable no-unused-expressions */
 
-function count(linesArr) {
-  let words = 0;
-  let chars = 0;
+const { unifyNewLineChar, removeSpacesFromStart, toArray } = require("./utils");
 
-  const lines = linesArr.length;
+let lines = 0;
+let words = 0;
+let chars = 0;
+let spaces = 0;
 
-  let char;
-  for (let i = 0; i < lines; i += 1) {
-    const wordsArr = linesArr[i].trim().split(/\s+/);
-    for (let k = 0; k < wordsArr.length; k += 1) {
-      char = wordsArr[k].length;
-      chars += char;
-      if (char > 1) words += 1;
+function countInEachLine(lineOfWords) {
+  lineOfWords.forEach(wrd => {
+    const { length } = wrd;
+
+    if (length > 0) {
+      chars += length;
+      words += 1;
     }
-  }
-
-  return {
-    lines,
-    words,
-    chars
-  };
-}
-
-function calculateSpaces(lines, str, chars) {
-  const { length } = str;
-
-  const spaces = lines === 1 ? length - chars : length - chars - lines;
-
-  return spaces;
+  });
 }
 
 /**
@@ -41,36 +24,41 @@ function calculateSpaces(lines, str, chars) {
  * @param {string} str
  * @returns
  */
-function initCounting(str) {
-  const pre = unifyNewLineChar(str);
+function startCounting(str) {
+  const unified = unifyNewLineChar(str);
 
-  const init = removeSpacesFromStart(pre);
+  const trimmedStr = unified.trim();
 
-  const linesArr = newLines2Array(init);
+  const trimmedEachLine = removeSpacesFromStart(trimmedStr);
 
-  const { lines, words, chars } = count(linesArr);
+  const linesArr = toArray(trimmedEachLine);
 
-  const spaces = calculateSpaces(lines, pre, chars);
+  lines = linesArr.length;
 
-  return {
-    lines,
-    words,
-    chars,
-    spaces
-  };
+  linesArr.forEach(line => {
+    const splittedArr = line.split(" ");
+
+    countInEachLine(splittedArr);
+  });
+
+  spaces = unified.length - chars;
+
+  if (lines > 1) {
+    spaces -= lines;
+  }
 }
 
 /**
  * Validates then calls function count.
  */
 function textics(str) {
-  let lines = 0;
-  let words = 0;
-  let chars = 0;
-  let spaces = 0;
+  lines = 0;
+  words = 0;
+  chars = 0;
+  spaces = 0;
 
   if (str && typeof str === "string" && str.length > 0) {
-    ({ lines, words, chars, spaces } = initCounting(str));
+    startCounting(str);
   }
 
   return {

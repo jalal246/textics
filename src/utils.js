@@ -20,8 +20,8 @@ function unifyNewLineChar(str) {
  * @param {string} str
  * @returns {string} -without spaces in new lines
  */
-function excludeNewline(str) {
-  return /\n /.test(str) ? str.replace(/\n /g, "\n") : str;
+function removeSpacesFromStart(str) {
+  return /\n\s+/.test(str) ? str.replace(/\n\s+/g, "\n") : str;
 }
 
 /**
@@ -36,6 +36,6 @@ function str2Array(str) {
 
 module.exports = {
   unifyNewLineChar,
-  excludeNewline,
+  removeSpacesFromStart,
   str2Array
 };

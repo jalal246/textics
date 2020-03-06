@@ -1,11 +1,4 @@
-const { unifyNewLineChar } = require("./utils");
-
-/**
- * exclude newline with a start spacing
- */
-function excludeNewline(str) {
-  return /\n /.test(str) ? str.replace(/\n /g, "\n") : str;
-}
+const { unifyNewLineChar, removeSpacesFromStart } = require("./utils");
 
 /**
  *
@@ -57,7 +50,7 @@ function calculateSpaces(lines, str, chars) {
 function initCounting(str) {
   const pre = unifyNewLineChar(str);
 
-  const init = excludeNewline(pre);
+  const init = removeSpacesFromStart(pre);
 
   const linesArr = splitToArray(init);
 

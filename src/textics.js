@@ -1,9 +1,4 @@
-/**
- * exclude double char from being count
- */
-function excludeDoubleChar(str) {
-  return /\r\n/.test(str) ? str.replace(/\r\n/g, "\n") : str;
-}
+const { unifyNewLineChar } = require("./utils");
 
 /**
  * exclude newline with a start spacing
@@ -45,6 +40,14 @@ function count(linesArr) {
   };
 }
 
+function calculateSpaces(lines, str, chars) {
+  const { length } = str;
+
+  const spaces = lines === 1 ? length - chars : length - chars - lines;
+
+  return spaces;
+}
+
 /**
  * Counts lines, words, chars and spaces for a given string.
  *
@@ -52,7 +55,7 @@ function count(linesArr) {
  * @returns
  */
 function initCounting(str) {
-  const pre = excludeDoubleChar(str);
+  const pre = unifyNewLineChar(str);
 
   const init = excludeNewline(pre);
 
@@ -60,7 +63,7 @@ function initCounting(str) {
 
   const { lines, words, chars } = count(linesArr);
 
-  const spaces = lines === 1 ? pre.length - chars : pre.length - chars - lines;
+  const spaces = calculateSpaces(lines, pre, chars);
 
   return {
     lines,

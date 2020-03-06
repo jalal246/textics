@@ -1,14 +1,8 @@
-const { unifyNewLineChar, removeSpacesFromStart } = require("./utils");
-
-/**
- *
- * split each line to array
- * @param {*} str
- * @returns
- */
-function splitToArray(str) {
-  return str.trim().split(/\r|\n/);
-}
+const {
+  unifyNewLineChar,
+  removeSpacesFromStart,
+  newLines2Array
+} = require("./utils");
 
 function count(linesArr) {
   let words = 0;
@@ -52,7 +46,7 @@ function initCounting(str) {
 
   const init = removeSpacesFromStart(pre);
 
-  const linesArr = splitToArray(init);
+  const linesArr = newLines2Array(init);
 
   const { lines, words, chars } = count(linesArr);
 

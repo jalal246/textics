@@ -17,6 +17,8 @@ function unifyNewLineChar(str) {
 /**
  * Checks string, if there is spaces in new lines, it removes it.
  *
+ * Note: new line defined as: \n
+ *
  * @param {string} str
  * @returns {string} -without spaces in new lines
  */
@@ -27,15 +29,17 @@ function removeSpacesFromStart(str) {
 /**
  * Splits each line of given string to array element.
  *
+ * Note: new line defined as: \n
+ *
  * @param {string} str
  * @returns {Array}
  */
-function str2Array(str) {
-  return str.trim().split(/\r|\n/);
+function newLines2Array(str) {
+  return str.trim().split(/\n/);
 }
 
 module.exports = {
   unifyNewLineChar,
   removeSpacesFromStart,
-  str2Array
+  newLines2Array
 };

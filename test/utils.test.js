@@ -4,10 +4,10 @@ const { expect } = require("chai");
 const {
   unifyNewLineChar,
   removeSpacesFromStart,
-  str2Array
+  newLines2Array
 } = require("../src/utils.js");
 
-describe("utils", () => {
+describe.only("utils", () => {
   describe("unifyNewLineChar", () => {
     it("replaces R", () => {
       const TXT_SAMPLE = "Hello\rThere\r!";
@@ -36,7 +36,7 @@ describe("utils", () => {
     });
   });
 
-  describe.only("removeSpacesFromStart", () => {
+  describe("removeSpacesFromStart", () => {
     it("removes spaces form new line", () => {
       const TXT_SAMPLE = "\n               Hello There!";
       const expected = "\nHello There!";
@@ -63,5 +63,14 @@ describe("utils", () => {
 
       expect(result).to.be.equal(expected);
     });
+  });
+
+  it("newLines2Array", () => {
+    const TXT_SAMPLE = "\nHello\nThere\n!";
+    const result = newLines2Array(TXT_SAMPLE);
+
+    expect(result).to.be.an("array");
+    expect(result.length).to.be.equal(3);
+    expect(result).to.have.ordered.members(["Hello", "There", "!"]);
   });
 });

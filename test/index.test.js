@@ -78,4 +78,17 @@ describe("TEXTICS", () => {
       spaces: 8
     });
   });
+
+  it("test multi lines from begging", () => {
+    const str = "\n\n\nHello";
+
+    const result = textics(str);
+
+    expect(result).to.deep.equal({
+      lines: 3,
+      words: 1,
+      chars: 5,
+      spaces: 0
+    });
+  });
 });

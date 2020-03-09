@@ -3,43 +3,7 @@
 const { expect } = require("chai");
 const textics = require("../src/textics.js");
 
-describe("TEXTICS", () => {
-  it("returns correct number for 1 word", () => {
-    const sample = "you";
-    const result = textics(sample);
-
-    expect(result).to.deep.equal({
-      lines: 1,
-      words: 1,
-      chars: 3,
-      spaces: 0
-    });
-  });
-
-  it("returns correct number for 1-word with extra spaces", () => {
-    const sample = "   you   ";
-    const result = textics(sample);
-
-    expect(result).to.deep.equal({
-      lines: 1,
-      words: 1,
-      chars: 3,
-      spaces: 6
-    });
-  });
-
-  it("returns correct number for 2-words with extra spaces", () => {
-    const sample = " you !  ";
-    const result = textics(sample);
-
-    expect(result).to.deep.equal({
-      lines: 1,
-      words: 2,
-      chars: 4,
-      spaces: 4
-    });
-  });
-
+describe("main function multi", () => {
   it("works for full sentence with spaces", () => {
     const sample = " Hello my old friend ! ";
     const result = textics(sample);
@@ -76,19 +40,6 @@ describe("TEXTICS", () => {
       words: 13,
       chars: 53,
       spaces: 8
-    });
-  });
-
-  it("test multi lines from begging", () => {
-    const str = "\n\n\nHello";
-
-    const result = textics(str);
-
-    expect(result).to.deep.equal({
-      lines: 3,
-      words: 1,
-      chars: 5,
-      spaces: 0
     });
   });
 });

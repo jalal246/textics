@@ -3,7 +3,7 @@
 const { expect } = require("chai");
 const {
   unifyNewLineChar,
-  removeSpacesFromStart,
+  replaceSpacesFromStart,
   toArray
 } = require("../src/utils.js");
 
@@ -36,12 +36,12 @@ describe("utils", () => {
     });
   });
 
-  describe("removeSpacesFromStart", () => {
+  describe("replaceSpacesFromStart", () => {
     it("removes spaces form new line", () => {
       const TXT_SAMPLE = "\n               Hello There!";
       const expected = "\nHello There!";
 
-      const result = removeSpacesFromStart(TXT_SAMPLE);
+      const result = replaceSpacesFromStart(TXT_SAMPLE);
 
       expect(result).to.be.equal(expected);
     });
@@ -50,7 +50,7 @@ describe("utils", () => {
       const TXT_SAMPLE = "Hello    There!";
       const expected = "Hello    There!";
 
-      const result = removeSpacesFromStart(TXT_SAMPLE);
+      const result = replaceSpacesFromStart(TXT_SAMPLE);
 
       expect(result).to.be.equal(expected);
     });
@@ -59,7 +59,7 @@ describe("utils", () => {
       const TXT_SAMPLE = "            Hello There!";
       const expected = "            Hello There!";
 
-      const result = removeSpacesFromStart(TXT_SAMPLE);
+      const result = replaceSpacesFromStart(TXT_SAMPLE);
 
       expect(result).to.be.equal(expected);
     });

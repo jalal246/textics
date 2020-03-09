@@ -10,7 +10,7 @@ describe.only("main function: #testing individual cases", () => {
 
     expect(result).to.deep.equal({
       lines: 1,
-      // words: 2,
+      words: 0,
       chars: 0,
       spaces: 5
     });
@@ -22,7 +22,7 @@ describe.only("main function: #testing individual cases", () => {
 
     expect(result).to.deep.equal({
       lines: 5,
-      // words: 2,
+      words: 0,
       chars: 0,
       spaces: 0
     });
@@ -34,27 +34,27 @@ describe.only("main function: #testing individual cases", () => {
 
     expect(result).to.deep.equal({
       lines: 1,
-      // words: 2,
+      words: 1,
       chars: 6,
       spaces: 0
     });
   });
 
   it("tests multi lines mixed", () => {
-    const str = `
-
-  Hello
-
-
-!`;
+    const str = `1
+2
+3
+4
+5
+6`;
 
     const result = textics(str);
 
     expect(result).to.deep.equal({
       lines: 6,
-      // words: 2,
+      words: 6,
       chars: 6,
-      spaces: 2
+      spaces: 0
     });
   });
 
@@ -64,7 +64,7 @@ describe.only("main function: #testing individual cases", () => {
 
     expect(result).to.deep.equal({
       lines: 1,
-      // words: 1,
+      words: 1,
       chars: 3,
       spaces: 0
     });
@@ -76,7 +76,7 @@ describe.only("main function: #testing individual cases", () => {
 
     expect(result).to.deep.equal({
       lines: 1,
-      // words: 1,
+      words: 1,
       chars: 3,
       spaces: 6
     });
@@ -88,7 +88,7 @@ describe.only("main function: #testing individual cases", () => {
 
     expect(result).to.deep.equal({
       lines: 1,
-      // words: 2,
+      words: 2,
       chars: 6,
       spaces: 3
     });

@@ -1,22 +1,11 @@
 /* eslint-disable no-unused-expressions */
 
-const { unifyNewLineChar, removeSpacesFromStart, toArray } = require("./utils");
+const { unifyNewLineChar } = require("./utils");
 
 let lines;
 let words;
 let chars;
 let spaces;
-
-function countInEachLine(lineOfWords) {
-  lineOfWords.forEach(wrd => {
-    const { length } = wrd;
-
-    if (length > 0) {
-      chars += length;
-      words += 1;
-    }
-  });
-}
 
 /**
  * Counts lines, words, chars and spaces for a given string.
@@ -25,27 +14,76 @@ function countInEachLine(lineOfWords) {
  * @returns
  */
 function startCounting(str) {
-  const unified = unifyNewLineChar(str);
+  /**
+   * Handle CR, LF, CR.
+   */
+  const unifiedStr = unifyNewLineChar(str);
 
-  // const trimmedStr = unified.trim();
+  /**
+   * getting total string length
+   */
+  const { length: totalLength } = unifiedStr;
 
-  // const trimmedEachLine = removeSpacesFromStart(trimmedStr);
+  const splittedByLines = unifiedStr.split(/\n/g) || [];
 
-  const linesArr = toArray(unified);
+  ({ length: lines } = splittedByLines);
 
-  lines = linesArr.length;
+  splittedByLines.forEach(line => {
+    const { length: lineLength } = line;
 
-  linesArr.forEach(line => {
-    const splittedArr = line.split(" ");
+    const trimmed = line.trim();
 
-    countInEachLine(splittedArr);
+    const { length: trimmedLength } = trimmed;
+
+    /**
+     * Calculates outer space.
+     */
+    spaces += lineLength - trimmedLength;
+
+    /**
+     * When zero, all line is spaces.
+     */
+    if (trimmedLength !== 0) {
+      const splittedBySpaces = trimmed.split(" ") || [];
+
+      const { length: wordsInLine } = splittedBySpaces;
+
+      words += wordsInLine;
+
+      /**
+       * if zero, then it's one word without spaces
+       */
+      if (wordsInLine > 1) {
+        spaces += wordsInLine - 1;
+      }
+
+      // spaces += lineLength - trimmed.length + wordsInLine;
+    }
   });
 
-  spaces = unified.length - chars;
+  // lines = countBasedOn(unifiedStr, /\n/g);
 
-  if (lines > 1) {
-    spaces -= lines;
+  if (words > 0) {
+    /**
+     * since total length included spaces and lines we substrate.
+     */
+    chars = totalLength - spaces;
+
+    if (lines > 1) {
+      chars -= lines - 1;
+    }
   }
+
+  // const { length: trimmedLength } = unifiedStr.trim();
+
+  // if (trimmedLength > 0) {
+  //   if (spaces === 0) {
+  //     words = 1;
+  //   } else {
+  //     words = trimmedLength - spaces;
+  //     console.log("startCounting -> words", lines + spaces);
+  //   }
+  // }
 }
 
 /**

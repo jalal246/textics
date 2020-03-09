@@ -3,33 +3,45 @@
   "version": "0.1.1",
   "description": "Text Statistics",
   "main": "src/textics.js",
+  "repository": "https://github.com/jalal246/textics.git",
+  "author": "Jalal Maskoun <jimmy002020@gmail.com>",
+  "license": "LGPL-3.0",
   "scripts": {
     "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jimmy02020/textics.git"
-  },
   "keywords": [
-    "backend",
-    "front end",
+    "move-position",
+    "corename",
+    "get-info",
+    "builderz",
+    "package-sorter",
+    "mytools",
+    "folo",
+    "dflex",
+    "textics",
     "text",
     "string",
+    "recursive",
     "statistics",
-    "stat"
+    "split",
+    "read",
+    "data",
+    "stat",
+    "count",
+    "counter",
+    "ascii",
+    "utility",
+    "tools"
   ],
   "files": [
+    "src",
     "dist",
     "README.md"
   ],
-  "author": {
-    "name": "Jalal Maskoun",
-    "email": "jimmy002020@gmail.com"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
-  "license": "'MIT'",
-  "bugs": {
-    "url": "https://github.com/Jimmy02020/textics/issues"
-  },
-  "homepage": "https://github.com/Jimmy02020/textics#readme",
+  "dependencies": {},
   "devDependencies": {}
 }

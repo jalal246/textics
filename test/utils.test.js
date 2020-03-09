@@ -66,7 +66,7 @@ describe("utils", () => {
   });
 
   it("toArray", () => {
-    const TXT_SAMPLE = "\nHello\nThere\n!";
+    const TXT_SAMPLE = "Hello\nThere\n!";
     const result = toArray(TXT_SAMPLE);
 
     expect(result).to.be.an("array");

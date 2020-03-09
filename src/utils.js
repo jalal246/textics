@@ -1,14 +1,14 @@
-const LF = /\n/g;
+const LF = "\n";
 
 /**
  * Checks string, if there is spaces in new lines, it removes it.
  *
  * @param {string} [str=""]
  * @param {RegExp} reg
- * @param {RegExp} [expression=""]
+ * @param {RegExp} expression
  * @returns {string} - modified replaced with expression
  */
-function replaceWith(str = "", reg, expression = "") {
+function replaceWith(str = "", reg, expression) {
   return reg.test(str) ? str.replace(reg, expression) : str;
 }
 
@@ -57,28 +57,9 @@ function toArray(str, newLineExp = LF) {
   return str.split(newLineExp);
 }
 
-function getMatch(str = "", reg) {
-  return str.match(reg) || [];
-}
-
-/**
- * Counts matching regex expression in a given string.
- *
- * @param {string} [str=""]
- * @param {RegExp} reg
- * @returns {number} of matched pattern.
- */
-function countBasedOn(str = "", reg) {
-  // console.log(str.match(reg) || []);
-  return (str.match(reg) || []).length;
-}
-
 module.exports = {
-  LF,
   replaceWith,
   unifyNewLineChar,
   replaceSpacesFromStart,
-  toArray,
-  getMatch,
-  countBasedOn
+  toArray
 };

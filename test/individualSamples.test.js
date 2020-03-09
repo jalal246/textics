@@ -3,7 +3,7 @@
 const { expect } = require("chai");
 const textics = require("../src/textics.js");
 
-describe.only("main function: #testing individual cases", () => {
+describe("main function: #testing individual cases", () => {
   it("tests all spaces", () => {
     const sample = "     ";
     const result = textics(sample);

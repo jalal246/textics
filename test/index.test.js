@@ -16,13 +16,13 @@ describe("main function multi", () => {
     });
   });
 
-  it("works with multi lines", () => {
+  it("works with multi lines sentence", () => {
     const sample = "\n Hello \nmy \nold \nfriend ! ";
 
     const result = textics(sample);
 
     expect(result).to.deep.equal({
-      lines: 4,
+      lines: 5,
       words: 5,
       chars: 17,
       spaces: 6
@@ -30,16 +30,21 @@ describe("main function multi", () => {
   });
 
   it("returns correct number with auto gen text", () => {
-    const str =
-      "Hello I am testing\nMy program here\nHope it works\nPerfectly \nWell !";
+    const str = `Hello
+ I am testing
+ textics here
+ Hope it works
+ perfectly
+ !
+`;
 
     const result = textics(str);
 
     expect(result).to.deep.equal({
-      lines: 5,
-      words: 13,
-      chars: 53,
-      spaces: 8
+      lines: 7,
+      words: 11,
+      chars: 47,
+      spaces: 10
     });
   });
 });

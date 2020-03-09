@@ -69,11 +69,13 @@ describe("TEXTICS", () => {
     const str =
       "Hello I am testing\nMy program here\nHope it works\nPerfectly \nWell !";
 
-    const { lines, words, chars, spaces } = textics(str);
+    const result = textics(str);
 
-    expect(lines).to.be.equal(5);
-    expect(words).to.be.equal(13);
-    expect(chars).to.be.equal(53);
-    expect(spaces).to.be.equal(8);
+    expect(result).to.deep.equal({
+      lines: 5,
+      words: 13,
+      chars: 53,
+      spaces: 8
+    });
   });
 });

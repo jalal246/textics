@@ -2,10 +2,10 @@
 
 const { unifyNewLineChar, removeSpacesFromStart, toArray } = require("./utils");
 
-let lines = 0;
-let words = 0;
-let chars = 0;
-let spaces = 0;
+let lines;
+let words;
+let chars;
+let spaces;
 
 function countInEachLine(lineOfWords) {
   lineOfWords.forEach(wrd => {
@@ -27,11 +27,11 @@ function countInEachLine(lineOfWords) {
 function startCounting(str) {
   const unified = unifyNewLineChar(str);
 
-  const trimmedStr = unified.trim();
+  // const trimmedStr = unified.trim();
 
-  const trimmedEachLine = removeSpacesFromStart(trimmedStr);
+  // const trimmedEachLine = removeSpacesFromStart(trimmedStr);
 
-  const linesArr = toArray(trimmedEachLine);
+  const linesArr = toArray(unified);
 
   lines = linesArr.length;
 

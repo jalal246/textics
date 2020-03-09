@@ -20,7 +20,7 @@ function startCounting(str) {
   const unifiedStr = unifyNewLineChar(str);
 
   /**
-   * getting total string length
+   * Getting total string length.
    */
   const { length: totalLength } = unifiedStr;
 
@@ -54,14 +54,14 @@ function startCounting(str) {
        * if zero, then it's one word without spaces
        */
       if (wordsInLine > 1) {
+        /**
+         * ["w1", "w2", "w3"].length = 3.
+         * How many spaces? length -1
+         */
         spaces += wordsInLine - 1;
       }
-
-      // spaces += lineLength - trimmed.length + wordsInLine;
     }
   });
-
-  // lines = countBasedOn(unifiedStr, /\n/g);
 
   if (words > 0) {
     /**
@@ -73,17 +73,6 @@ function startCounting(str) {
       chars -= lines - 1;
     }
   }
-
-  // const { length: trimmedLength } = unifiedStr.trim();
-
-  // if (trimmedLength > 0) {
-  //   if (spaces === 0) {
-  //     words = 1;
-  //   } else {
-  //     words = trimmedLength - spaces;
-  //     console.log("startCounting -> words", lines + spaces);
-  //   }
-  // }
 }
 
 /**

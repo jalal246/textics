@@ -54,7 +54,7 @@ function replaceSpacesFromStart(str, newLineExp = LF) {
  * @returns
  */
 function toArray(str, newLineExp = LF) {
-  return str.split(newLineExp);
+  return str.split(newLineExp) || [];
 }
 
 module.exports = {

@@ -1,11 +1,11 @@
-/* eslint-disable no-unused-expressions */
+const { unifyNewLineChar, toArray } = require("./utils");
 
-const { unifyNewLineChar } = require("./utils");
+const regNewLine = /\n/g;
+const regSpace = /\s/g;
 
-let lines;
-let words;
-let chars;
-let spaces;
+function isValid(str) {
+  return str && typeof str === "string" && str.length > 0;
+}
 
 /**
  * Counts lines, words, chars and spaces for a given string.
@@ -13,7 +13,21 @@ let spaces;
  * @param {string} str
  * @returns
  */
-function startCounting(str) {
+function textics(str) {
+  let lines = 0;
+  let words = 0;
+  let chars = 0;
+  let spaces = 0;
+
+  if (!isValid(str)) {
+    return {
+      lines,
+      words,
+      chars,
+      spaces
+    };
+  }
+
   /**
    * Handle CR, LF, CR.
    */
@@ -24,7 +38,7 @@ function startCounting(str) {
    */
   const { length: totalLength } = unifiedStr;
 
-  const splittedByLines = unifiedStr.split(/\n/g) || [];
+  const splittedByLines = toArray(unifiedStr, regNewLine);
 
   ({ length: lines } = splittedByLines);
 
@@ -44,7 +58,7 @@ function startCounting(str) {
      * When zero, all line is spaces.
      */
     if (trimmedLength !== 0) {
-      const splittedBySpaces = trimmed.split(" ") || [];
+      const splittedBySpaces = toArray(trimmed, regSpace);
 
       const { length: wordsInLine } = splittedBySpaces;
 
@@ -72,20 +86,6 @@ function startCounting(str) {
     if (lines > 1) {
       chars -= lines - 1;
     }
-  }
-}
-
-/**
- * Validates then calls function count.
- */
-function textics(str) {
-  lines = 0;
-  words = 0;
-  chars = 0;
-  spaces = 0;
-
-  if (str && typeof str === "string" && str.length > 0) {
-    startCounting(str);
   }
 
   return {

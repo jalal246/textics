@@ -9,17 +9,17 @@ npm install textics
 ## API
 
 ```js
-const result = textics(str);
+const { lines, words, chars, spaces } = textics(str);
 ```
 
-### Example(1)
+### Example
 
 ```js
 const textics = require("textics");
 
-const stat = textics("you got the power");
+const result = textics("you got the power");
 
-expect(stat).to.deep.equal({
+expect(result).to.deep.equal({
   lines: 1,
   words: 4,
   chars: 14,

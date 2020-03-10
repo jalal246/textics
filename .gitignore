@@ -1,7 +1,9 @@
-npm_packages
-coverage
-dist
 node_modules
-.npm
-npm-debug.log*
-package-lock.json
+*.log
+*.lock
+.changelog
+build
+dist
+draft
+scripts
+react

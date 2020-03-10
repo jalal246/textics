@@ -1,70 +1,56 @@
-[![NPM](https://nodei.co/npm/textics.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/textics/)
+# textics
 
-[![Travis](https://img.shields.io/travis/rust-lang/rust.svg?style=flat-square)](travis-ci.org/Jimmy02020/textics)
-[![Codecov](https://img.shields.io/codecov/c/github/codecov/example-python.svg?style=flat-square)](https://codecov.io/gh/Jimmy02020/textics)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](https://github.com/Jimmy02020/textics/blob/master/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Jimmy02020/textics/pulls)
+> `text/ics` counts lines, words, chars and spaces for a given string :page_with_curl: :memo:
 
-
-> Text Statistics
-
-`textics` counts lines, words, chars and spaces for a given string.
-
-Getting Started
----------------
-
-NPM
-```sh
+```bash
 npm install textics
 ```
 
-CDN
-```sh
-https://unpkg.com/textics/dist/
+## API
+
+```js
+const { lines, words, chars, spaces } = textics(str);
 ```
 
-Syntax
--------
+### Example
 
-### textics(string)
+```js
+const textics = require("textics");
 
-returns object: `{ lines, words, chars, spaces }`
+const result = textics("you got the power");
 
-
-
-Using textics
-----------
-
-```javascript
-const textics = require('textics')
-
-const stat = textics('you got the power')
-
-console.log(stat);
-//
-{
+expect(result).to.deep.equal({
   lines: 1,
   words: 4,
   chars: 14,
-  spaces: 3,
-}
-//
-
+  spaces: 3
+});
 ```
 
-Using textics with stream
--------------------------
-See :point_right: [textics-stream](https://github.com/Jimmy02020/textics-stream) :fire:
+### Using textics with stream
 
-Tests
------
+- [textics-stream](https://github.com/Jimmy02020/textics-stream)
+
+### Related projects
+
+- [packageSorter](https://github.com/jalal246/packageSorter) - Sorting packages
+  for monorepos production.
+
+- [builderz](https://github.com/jalal246/builderz) - Building your project with zero config.
+
+- [corename](https://github.com/jalal246/corename) - Extracts package name.
+
+- [get-info](https://github.com/jalal246/get-info) - Utility functions for
+  projects production.
+
+- [move-position](https://github.com/jalal246/move-position) - Moves element in given array form index-A to index-B
+
+## Tests
 
 ```sh
 npm test
 ```
 
+## License
 
-License
--------
-
-This project is licensed under the [MIT License](https://github.com/Jimmy02020/textics/blob/master/LICENSE)
+This project is licensed under the [GPL-3.0 License](https://github.com/jalal246/textics/blob/master/LICENSE)

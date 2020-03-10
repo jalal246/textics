@@ -2,12 +2,16 @@
   "name": "textics",
   "version": "0.1.1",
   "description": "Text Statistics",
-  "main": "src/textics.js",
+  "source": "src/textics.js",
+  "main": "dist/textics.js",
+  "module": "dist/textics.module.js",
+  "unpkg": "dist/textics.umd.js",
   "repository": "https://github.com/jalal246/textics.git",
   "author": "Jalal Maskoun <jimmy002020@gmail.com>",
   "license": "LGPL-3.0",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "microbundle"
   },
   "keywords": [
     "move-position",

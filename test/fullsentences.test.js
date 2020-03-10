@@ -3,7 +3,7 @@
 const { expect } = require("chai");
 const textics = require("../src/textics.js");
 
-describe("main function multi", () => {
+describe("main function: #testing sentences", () => {
   it("works for full sentence with spaces", () => {
     const sample = " Hello my old friend ! ";
     const result = textics(sample);

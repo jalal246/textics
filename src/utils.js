@@ -21,7 +21,7 @@ function replaceWith(str = "", reg, expression) {
  * \n = LF (Line Feed) → Used as a new line character in Unix/Mac OS X
  * \r\n = CR + LF → Used as a new line character in Windows
  *
- * @see {https://stackoverflow.com/a/15433225/6348157}
+ * @link {https://stackoverflow.com/a/15433225/6348157}
  * @param {string} [str=""]
  * @param {RegExp} [newLineExp=LF] -  LF new line.
  * @returns {string} modified with str with \n as new line
@@ -54,7 +54,7 @@ function replaceSpacesFromStart(str, newLineExp = LF) {
  * @returns
  */
 function toArray(str, newLineExp = LF) {
-  return str.split(newLineExp) || [];
+  return str.split(newLineExp);
 }
 
 module.exports = {

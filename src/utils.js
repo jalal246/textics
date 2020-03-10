@@ -1,3 +1,9 @@
+/**
+ * NOTE:
+ *
+ * THESE FUNCTIONS ARE DEPRECATED
+ */
+
 const LF = "\n";
 
 /**

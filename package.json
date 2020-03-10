@@ -1,6 +1,6 @@
 {
   "name": "textics",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Text Statistics",
   "source": "src/textics.js",
   "main": "dist/textics.js",

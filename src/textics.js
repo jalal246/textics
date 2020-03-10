@@ -1,6 +1,7 @@
-const { unifyNewLineChar, toArray } = require("./utils");
+const NL_R = /\r/g;
+const NL_RN = /\r\n/g;
+const NL_N = /\n/g;
 
-const regNewLine = /\n/g;
 const regSpace = /\s/g;
 
 function isValid(str) {
@@ -28,17 +29,20 @@ function textics(str) {
     };
   }
 
-  /**
-   * Handle CR, LF, CR.
-   */
-  const unifiedStr = unifyNewLineChar(str);
+  let regNewLine = NL_N;
+
+  if (NL_R.test(str)) {
+    regNewLine = NL_R;
+  } else if (NL_RN.test(str)) {
+    regNewLine = NL_RN;
+  }
 
   /**
    * Getting total string length.
    */
-  const { length: totalLength } = unifiedStr;
+  const { length: totalLength } = str;
 
-  const splittedByLines = toArray(unifiedStr, regNewLine);
+  const splittedByLines = str.split(regNewLine);
 
   ({ length: lines } = splittedByLines);
 
@@ -55,10 +59,10 @@ function textics(str) {
     spaces += lineLength - trimmedLength;
 
     /**
-     * When zero, all line is spaces.
+     * When zero, empty line.
      */
     if (trimmedLength !== 0) {
-      const splittedBySpaces = toArray(trimmed, regSpace);
+      const splittedBySpaces = trimmed.split(regSpace);
 
       const { length: wordsInLine } = splittedBySpaces;
 

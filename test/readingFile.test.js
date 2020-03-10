@@ -3,7 +3,7 @@ const { readFileSync } = require("fs");
 const { resolve } = require("path");
 const textics = require("../src/textics");
 
-describe.only("Testing with file", () => {
+describe("Testing with file", () => {
   it("works", () => {
     const content = readFileSync(resolve(__dirname, "txtTest.txt"), "utf8");
 
@@ -11,9 +11,9 @@ describe.only("Testing with file", () => {
 
     expect(result).to.be.deep.equal({
       words: 447,
-      lines: 9, // am not sure about line number.
+      lines: 9,
       chars: 2510,
-      spaces: 442
+      spaces: 450
     });
   });
 });

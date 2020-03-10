@@ -1,6 +1,6 @@
 # textics
 
-> `text/ics` counts lines, words, chars and spaces for a given string :arrows_counterclockwise:
+> `text/ics` counts lines, words, chars and spaces for a given string :page_with_curl: :memo:
 
 ```bash
 npm install textics

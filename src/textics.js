@@ -9,22 +9,27 @@
 // }
 
 /**
+ * \r = CR (Carriage Return) → Used as a new line character in Mac OS before X
+ * \n = LF (Line Feed) → Used as a new line character in Unix/Mac OS X
+ * \r\n = CR + LF → Used as a new line character in Windows
+ */
+const CR = /\r/g;
+const CRLF = /\r\n/g;
+const LF = /\n/g;
+
+/**
  * Extracts new line used char in a given string.
  *
  * @param {string} str
  * @returns {string}
  */
 function getNewLineChar(str) {
-  const NL_R = /\r/g;
-  const NL_RN = /\r\n/g;
-  const NL_N = /\n/g;
+  let lineChar = LF;
 
-  let lineChar = NL_N;
-
-  if (NL_R.test(str)) {
-    lineChar = NL_R;
-  } else if (NL_RN.test(str)) {
-    lineChar = NL_RN;
+  if (CR.test(str)) {
+    lineChar = CR;
+  } else if (CRLF.test(str)) {
+    lineChar = CRLF;
   }
 
   return lineChar;
@@ -118,4 +123,4 @@ function textics(str) {
   };
 }
 
-module.exports = { textics, getNewLineChar };
+module.exports = { textics, getNewLineChar, CR, CRLF, LF };

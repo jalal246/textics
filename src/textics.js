@@ -1,11 +1,33 @@
-const NL_R = /\r/g;
-const NL_RN = /\r\n/g;
-const NL_N = /\n/g;
-
-const regSpace = /\s/g;
-
+/**
+ * validates string
+ *
+ * @param {string} str
+ * @returns {boolean}
+ */
 function isValid(str) {
   return str && typeof str === "string" && str.length > 0;
+}
+
+/**
+ * Extracts new line used char in a given string.
+ *
+ * @param {string} str
+ * @returns {string}
+ */
+function getNewLineChar(str) {
+  const NL_R = /\r/g;
+  const NL_RN = /\r\n/g;
+  const NL_N = /\n/g;
+
+  let lineChar = NL_N;
+
+  if (NL_R.test(str)) {
+    lineChar = NL_R;
+  } else if (NL_RN.test(str)) {
+    lineChar = NL_RN;
+  }
+
+  return lineChar;
 }
 
 /**
@@ -29,13 +51,9 @@ function textics(str) {
     };
   }
 
-  let regNewLine = NL_N;
+  const regNewLine = getNewLineChar(str);
 
-  if (NL_R.test(str)) {
-    regNewLine = NL_R;
-  } else if (NL_RN.test(str)) {
-    regNewLine = NL_RN;
-  }
+  const regSpace = /\s/g;
 
   /**
    * Getting total string length.

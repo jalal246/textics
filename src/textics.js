@@ -1,12 +1,12 @@
-/**
- * validates string
- *
- * @param {string} str
- * @returns {boolean}
- */
-function isValid(str) {
-  return str && typeof str === "string" && str.length > 0;
-}
+// /**
+//  * validates string
+//  *
+//  * @param {string} str
+//  * @returns {boolean}
+//  */
+// function isValid(str) {
+//   return str && typeof str === "string" && str.length > 0;
+// }
 
 /**
  * Extracts new line used char in a given string.
@@ -42,14 +42,14 @@ function textics(str) {
   let chars = 0;
   let spaces = 0;
 
-  if (!isValid(str)) {
-    return {
-      lines,
-      words,
-      chars,
-      spaces
-    };
-  }
+  // if (!isValid(str)) {
+  //   return {
+  //     lines,
+  //     words,
+  //     chars,
+  //     spaces
+  //   };
+  // }
 
   const regNewLine = getNewLineChar(str);
 
@@ -118,4 +118,4 @@ function textics(str) {
   };
 }
 
-module.exports = textics;
+module.exports = { textics, getNewLineChar };

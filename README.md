@@ -15,7 +15,7 @@ const { lines, words, chars, spaces } = textics(str);
 ### Example
 
 ```js
-const textics = require("textics");
+const { textics } = require("textics");
 
 const result = textics("you got the power");
 

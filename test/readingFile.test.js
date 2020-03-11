@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { readFileSync } = require("fs");
 const { resolve } = require("path");
-const textics = require("../src/textics");
+const { textics } = require("../src/textics");
 
 describe("Testing with file", () => {
   it("works", () => {

@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 
 const { expect } = require("chai");
-const textics = require("../src/textics.js");
+const { textics } = require("../src/textics.js");
 
 describe("main function: #testing sentences", () => {
   it("works for full sentence with spaces", () => {

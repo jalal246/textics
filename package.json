@@ -10,7 +10,9 @@
   "author": "Jalal Maskoun <jimmy002020@gmail.com>",
   "license": "LGPL-3.0",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "builderz --entries=src/textics",
+    "prepublish": "yarn build"
   },
   "keywords": [
     "move-position",
@@ -49,6 +51,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "builderz": "^0.11.0",
     "eslint": "^7.15.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1"

@@ -69,7 +69,7 @@ function textics(str) {
 
   ({ length: lines } = splittedByLines);
 
-  splittedByLines.forEach(line => {
+  splittedByLines.forEach((line) => {
     const { length: lineLength } = line;
 
     const trimmed = line.trim();
@@ -119,8 +119,8 @@ function textics(str) {
     lines,
     words,
     chars,
-    spaces
+    spaces,
   };
 }
 
-module.exports = { textics, getNewLineChar, CR, CRLF, LF };
+module.exports = { textics };

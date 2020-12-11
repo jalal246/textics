@@ -8,5 +8,10 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 12,
   },
+  globals: {
+    describe: true,
+    it: true,
+    expect: true,
+  },
   rules: {},
 };

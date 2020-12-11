@@ -13,7 +13,7 @@ describe("Testing with file", () => {
       words: 447,
       lines: 9,
       chars: 2510,
-      spaces: 450
+      spaces: 442
     });
   });
 });

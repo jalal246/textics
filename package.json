@@ -54,6 +54,7 @@
     "builderz": "^0.11.0",
     "eslint": "^7.15.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-import": "^2.22.1"
   }
 }

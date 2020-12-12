@@ -1,6 +1,6 @@
 {
   "name": "textics",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Text Statistics",
   "source": "src/textics.js",
   "main": "dist/textics.min.cjs.js",

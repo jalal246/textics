@@ -1,40 +1,3 @@
-// /**
-//  * validates string
-//  *
-//  * @param {string} str
-//  * @returns {boolean}
-//  */
-// function isValid(str) {
-//   return str && typeof str === "string" && str.length > 0;
-// }
-
-/**
- * \r = CR (Carriage Return) → Used as a new line character in Mac OS before X
- * \n = LF (Line Feed) → Used as a new line character in Unix/Mac OS X
- * \r\n = CR + LF → Used as a new line character in Windows
- */
-const CR = /\r/g;
-const CRLF = /\r\n/g;
-const LF = /\n/g;
-
-/**
- * Extracts new line used char in a given string.
- *
- * @param {string} str
- * @returns {string}
- */
-function getNewLineChar(str) {
-  let lineChar = LF;
-
-  if (CR.test(str)) {
-    lineChar = CR;
-  } else if (CRLF.test(str)) {
-    lineChar = CRLF;
-  }
-
-  return lineChar;
-}
-
 /**
  * Counts lines, words, chars and spaces for a given string.
  *
@@ -42,53 +5,50 @@ function getNewLineChar(str) {
  * @returns
  */
 function textics(str) {
+  if (typeof str !== "string") {
+    throw new TypeError("Input is not string!");
+  }
+
   let lines = 0;
   let words = 0;
   let chars = 0;
   let spaces = 0;
 
-  // if (!isValid(str)) {
-  //   return {
-  //     lines,
-  //     words,
-  //     chars,
-  //     spaces
-  //   };
-  // }
-
-  const regNewLine = getNewLineChar(str);
-
-  const regSpace = /\s/g;
-
   /**
    * Getting total string length.
    */
-  const { length: totalLength } = str;
+  const totalInputLength = str.length;
 
-  const splittedByLines = str.split(regNewLine);
+  if (totalInputLength === 0)
+    return {
+      lines,
+      words,
+      chars,
+      spaces,
+    };
 
-  ({ length: lines } = splittedByLines);
+  const splittedByLines = str.split(/(?:\r?\n)/g) || [];
 
-  splittedByLines.forEach(line => {
-    const { length: lineLength } = line;
+  lines = splittedByLines.length;
 
-    const trimmed = line.trim();
+  splittedByLines.forEach((line) => {
+    const lineLength = line.length;
 
-    const { length: trimmedLength } = trimmed;
+    const trimmedLine = line.trim();
+    const trimmedLineLength = trimmedLine.length;
 
     /**
      * Calculates outer space.
      */
-    spaces += lineLength - trimmedLength;
+    spaces += lineLength - trimmedLineLength;
 
     /**
      * When zero, empty line.
      */
-    if (trimmedLength !== 0) {
-      const splittedBySpaces = trimmed.split(regSpace);
+    if (trimmedLineLength !== 0) {
+      const splittedBySpaces = trimmedLine.split(/\s/g);
 
-      const { length: wordsInLine } = splittedBySpaces;
-
+      const wordsInLine = splittedBySpaces.length;
       words += wordsInLine;
 
       /**
@@ -101,26 +61,19 @@ function textics(str) {
          */
         spaces += wordsInLine - 1;
       }
+
+      splittedBySpaces.forEach((word) => {
+        chars += word.length;
+      });
     }
   });
-
-  if (words > 0) {
-    /**
-     * since total length included spaces and lines we substrate.
-     */
-    chars = totalLength - spaces;
-
-    if (lines > 1) {
-      chars -= lines - 1;
-    }
-  }
 
   return {
     lines,
     words,
     chars,
-    spaces
+    spaces,
   };
 }
 
-module.exports = { textics, getNewLineChar, CR, CRLF, LF };
+module.exports = { textics };

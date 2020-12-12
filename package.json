@@ -3,14 +3,15 @@
   "version": "1.1.0",
   "description": "Text Statistics",
   "source": "src/textics.js",
-  "main": "dist/textics.js",
-  "module": "dist/textics.module.js",
-  "unpkg": "dist/textics.umd.js",
+  "main": "dist/textics.min.cjs.js",
+  "umd:main": "dist/textics.min.umd",
   "repository": "https://github.com/jalal246/textics.git",
   "author": "Jalal Maskoun <jimmy002020@gmail.com>",
   "license": "LGPL-3.0",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "builderz --entries=src/textics",
+    "prepublish": "yarn build"
   },
   "keywords": [
     "move-position",
@@ -48,6 +49,13 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "builderz": "^0.11.0",
+    "chai": "^4.2.0",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.2.1"
+  }
 }

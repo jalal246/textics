@@ -29,7 +29,7 @@ expect(result).to.deep.equal({
 
 ### Using textics with stream
 
-- [textics-stream](https://github.com/Jimmy02020/textics-stream)
+- [textics-stream](https://github.com/jalal246/textics-stream)
 
 ### Related projects
 
